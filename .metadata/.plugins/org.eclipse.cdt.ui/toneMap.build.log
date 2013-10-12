@@ -1,0 +1,17 @@
+
+**** Build of configuration Debug for project toneMap ****
+
+make all 
+Building file: ../src/toneMap.cu
+Invoking: NVCC Compiler
+nvcc -I/usr/local/include -I/usr/local/cuda-5.0/samples -I/usr/include/opencv -I/usr/local/cuda/include -G -g -O0 -gencode arch=compute_30,code=sm_30 -odir "src" -M -o "src/toneMap.d" "../src/toneMap.cu"
+nvcc --compile -G -I/usr/local/include -I/usr/local/cuda-5.0/samples -I/usr/include/opencv -I/usr/local/cuda/include -O0 -g -gencode arch=compute_30,code=compute_30 -gencode arch=compute_30,code=sm_30  -x cu -o  "src/toneMap.o" "../src/toneMap.cu"
+Finished building: ../src/toneMap.cu
+ 
+Building target: toneMap
+Invoking: NVCC Linker
+nvcc -L/usr/local/lib -link -o  "toneMap"  ./src/loadSaveImage.o ./src/reference_calc.o ./src/toneMap.o   -lopencv_core -lopencv_imgproc -lopencv_highgui
+Finished building target: toneMap
+ 
+
+**** Build Finished ****

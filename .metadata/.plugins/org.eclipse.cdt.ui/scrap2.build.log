@@ -1,0 +1,17 @@
+
+**** Build of configuration Debug for project scrap2 ****
+
+make all 
+Building file: ../src/scrap2.cpp
+Invoking: NVCC Compiler
+nvcc -G -g -O0  -odir "src" -M -o "src/scrap2.d" "../src/scrap2.cpp"
+nvcc -G -g -O0 --compile  -x c++ -o  "src/scrap2.o" "../src/scrap2.cpp"
+Finished building: ../src/scrap2.cpp
+ 
+Building target: scrap2
+Invoking: NVCC Linker
+nvcc  -link -o  "scrap2"  ./src/scrap2.o   
+Finished building target: scrap2
+ 
+
+**** Build Finished ****

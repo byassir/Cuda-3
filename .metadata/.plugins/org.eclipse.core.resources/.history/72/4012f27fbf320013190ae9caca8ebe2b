@@ -1,0 +1,40 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+CPP_SRCS += \
+../src/scrap2.cpp 
+
+CU_SRCS += \
+../src/sum_reduction.cu 
+
+CU_DEPS += \
+./src/sum_reduction.d 
+
+OBJS += \
+./src/scrap2.o \
+./src/sum_reduction.o 
+
+CPP_DEPS += \
+./src/scrap2.d 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+src/%.o: ../src/%.cpp
+	@echo 'Building file: $<'
+	@echo 'Invoking: NVCC Compiler'
+	nvcc -G -g -O0  -odir "src" -M -o "$(@:%.o=%.d)" "$<"
+	nvcc -G -g -O0 --compile  -x c++ -o  "$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/%.o: ../src/%.cu
+	@echo 'Building file: $<'
+	@echo 'Invoking: NVCC Compiler'
+	nvcc -G -g -O0  -odir "src" -M -o "$(@:%.o=%.d)" "$<"
+	nvcc --compile -G -O0 -g  -x cu -o  "$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+

@@ -1,0 +1,16 @@
+/* atof example: sine calculator */
+#include <stdio.h>      /* printf, fgets */
+#include <stdlib.h>     /* atof */
+#include <iostream>
+int main (int argc, const char* argv[])
+{
+
+	for (int s = 23455 ; s > 0 ; s >>= 1){
+		std::cout << s << "\n";
+	}
+
+	return 0;
+}
+
+
+

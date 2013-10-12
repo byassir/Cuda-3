@@ -1,0 +1,16 @@
+/* atof example: sine calculator */
+#include <stdio.h>      /* printf, fgets */
+#include <stdlib.h>     /* atof */
+#include <iostream>
+int main ()
+{
+	float x = 3.4;
+	int y = std::floor(x);
+
+	std::cout << y;
+
+
+
+
+	return 0;
+}

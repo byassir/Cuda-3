@@ -1,0 +1,17 @@
+
+**** Build of configuration Debug for project scrap ****
+
+make all 
+Building file: ../src/reduction.cu
+Invoking: NVCC Compiler
+nvcc -I/usr/local/cuda-5.0/samples -I/usr/local/cuda/include -G -g -O0  -odir "src" -M -o "src/reduction.d" "../src/reduction.cu"
+nvcc --compile -G -I/usr/local/cuda-5.0/samples -I/usr/local/cuda/include -O0 -g  -x cu -o  "src/reduction.o" "../src/reduction.cu"
+Finished building: ../src/reduction.cu
+ 
+Building target: scrap
+Invoking: NVCC Linker
+nvcc  -link -o  "scrap"  ./src/reduction.o   
+Finished building target: scrap
+ 
+
+**** Build Finished ****
