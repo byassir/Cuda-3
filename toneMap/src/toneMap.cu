@@ -7,7 +7,7 @@
 #include <math.h>
 #include <assert.h>
 
-//chroma-LogLuminance Space
+//chroma-LogLuminance Spaces
 static float *d_x__;
 static float *d_y__;
 static float *d_logY__;
@@ -375,7 +375,7 @@ void calculate_histo(const float* const d_logLuminance,
 		__syncthreads();
 
 		//compute bin value of input
-		int bin = static_cast <int> (floor((d_logLuminance[gid]-min_logLum)/ lumRange * numBins));
+		int bin = static_cast <int> (floor((sdata[tid]-min_logLum)/ lumRange * numBins)); //replace with sdat
 		//increment histogram at bin value
 		atomicAdd(&(d_histogram[bin]), 1);
 	}
@@ -408,10 +408,12 @@ void blelloch_scan(unsigned int* const d_cdf, unsigned int* d_histogram, int num
 	// traverse down tree & build scan
 	for (int d = 1; d < numBins; d *= 2) {
 		offset >>= 1;
+		printf("%d \n", offset);
 		__syncthreads();
 		if (thid < d) {
 			int ai = offset*(2*thid+1)-1;
 			int bi = offset*(2*thid+2)-1;
+			//printf("%s %d %s %d \n", "ai=",ai,",   bi=",bi);
 			float t = sdata2[ai];
 			sdata2[ai] = sdata2[bi];
 			sdata2[bi] += t;
@@ -496,7 +498,7 @@ void your_histogram_and_prefixsum(const float* const d_logLuminance,
 		std::cout << *(h_histogram+i) << "\n";
 	}
 	*/
-	//std::cout << numBins << "\n";
+	std::cout << numBins << "\n";
 	blelloch_scan<<<1, numBins/2, sizeof(unsigned int) * numBins>>>(d_cdf, d_histogram, numBins);
 
 	cudaDeviceSynchronize(); checkCudaErrors(cudaGetLastError());
